@@ -1,10 +1,16 @@
-import React from "react";
-
+import { useThemeContext } from "../context/context";
 const Content = () => {
+  const theme = useThemeContext();
+  const darkMode = theme.darkMode;
+
   return (
     <div>
       <div className="container p-4">
-        <header className="entry-header-outer">
+        <header
+          className={`${
+            darkMode ? "text-dark" : "text-light"
+          } entry-header-outer`}
+        >
           <div className="entry-header">
             <span
               className="post-level"
@@ -25,7 +31,11 @@ const Content = () => {
                 مقالات عمومی
               </a>
             </span>
-            <h1 className="post-title entry-title">
+            <h1
+              className={`${
+                darkMode ? "text-light" : "text-dark"
+              } entry-header-outer post-title entry-title`}
+            >
               معرفی هوش مصنوعی Claude 2؛ رقیب جدید ChatGPT
             </h1>
             <div className="single-post-meta post-meta clearfix">

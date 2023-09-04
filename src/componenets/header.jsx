@@ -1,9 +1,19 @@
-import React from "react";
+import { useThemeContext } from "../context/context";
 
 const Header = () => {
+  const theme = useThemeContext();
+  const darkMode = theme.darkMode;
+  const toggleTheme = () => {
+    theme.setDarkMode(!darkMode);
+  };
+
   return (
     <div>
-      <header className="navbar navbar-expand bg-secenary navbar-light shadow-sm">
+      <header
+        className={`navbar navbar-expand ${
+          darkMode ? "navbar-dark bg-dark" : "bg-secenary navbar-light"
+        }  shadow-sm`}
+      >
         <div className="container">
           <ul className="navbar-nav">
             <li className="navbar-item">
@@ -30,7 +40,12 @@ const Header = () => {
               </a>
             </li>
           </ul>
-          <button className="btn btn-dark">تاریک</button>
+          <button
+            onClick={toggleTheme}
+            className={`${darkMode ? "btn-light" : "btn-dark"} btn `}
+          >
+            {darkMode ? "تاریک" : "روشن"}
+          </button>
         </div>
       </header>
     </div>
